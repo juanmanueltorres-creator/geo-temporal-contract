@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1",
+  "source": {
+    "id": "open-meteo-ecmwf",
+    "provider": "Open-Meteo",
+    "dataset": "ECMWF IFS HRES 9 km",
+    "url": "https://open-meteo.com/en/docs/historical-forecast-api"
+  },
+  "temporal": {
+    "kind": "instant",
+    "role": "model-frame",
+    "canonical": "2026-09-05T23:00:00.000Z",
+    "sourceValue": "2026-09-05T23:00",
+    "sourceTimeZone": "UTC",
+    "timeZoneBasis": "declared",
+    "timeZoneNote": "The request explicitly asks Open-Meteo for timezone=UTC before the response is normalized.",
+    "displayTimeZone": "America/Argentina/Buenos_Aires"
+  },
+  "provenance": {
+    "fetchedAt": "2026-09-05T23:31:00Z",
+    "generatedAt": "2026-09-05T23:31:00Z"
+  },
+  "freshness": {
+    "staleAfterMinutes": 480,
+    "reference": "fetchedAt"
+  }
+}

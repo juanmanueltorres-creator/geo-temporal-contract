@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1",
+  "source": {
+    "id": "conae-hotspots",
+    "provider": "CONAE",
+    "dataset": "Focos de calor",
+    "url": "https://catalogos5.conae.gov.ar/catalogofocos/"
+  },
+  "temporal": {
+    "kind": "instant",
+    "role": "observation",
+    "canonical": "2026-09-05T04:08:00.000Z",
+    "sourceValue": "2026-09-05 - 04:08:00",
+    "sourceTimeZone": "UTC",
+    "timeZoneBasis": "assumed",
+    "timeZoneNote": "The public payload does not explicitly label its timezone; the current Pulso adapter normalizes it as UTC and keeps that limitation visible.",
+    "displayTimeZone": "America/Argentina/Buenos_Aires"
+  },
+  "provenance": {
+    "fetchedAt": "2026-09-05T23:13:27.527Z",
+    "generatedAt": "2026-09-05T23:13:27.527Z"
+  },
+  "freshness": {
+    "staleAfterMinutes": 240,
+    "reference": "fetchedAt"
+  }
+}
