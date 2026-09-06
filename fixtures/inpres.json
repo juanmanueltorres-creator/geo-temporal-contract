@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.1",
+  "source": {
+    "id": "inpres-earthquakes",
+    "provider": "INPRES",
+    "dataset": "Sismos recientes",
+    "url": "https://www.inpres.gob.ar/sismos_consultados"
+  },
+  "temporal": {
+    "kind": "instant",
+    "role": "observation",
+    "canonical": "2026-08-30T13:30:50.000Z",
+    "sourceValue": "2026-08-30 10:30:50",
+    "sourceTimeZone": "America/Argentina/Buenos_Aires",
+    "timeZoneBasis": "inferred",
+    "timeZoneNote": "The current INPRES adapter interprets the source table as Argentina local time; stronger source documentation can upgrade this basis later.",
+    "displayTimeZone": "America/Argentina/Buenos_Aires"
+  },
+  "provenance": {
+    "fetchedAt": "2026-09-05T23:50:22.107Z",
+    "generatedAt": "2026-09-05T23:50:22.107Z"
+  },
+  "freshness": {
+    "staleAfterMinutes": 240,
+    "reference": "fetchedAt"
+  }
+}

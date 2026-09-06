@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:geo-temporal-contract:temporal-envelope:0.1",
+  "title": "Geo Temporal Contract Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "source",
+    "temporal",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "provider"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "provider": {"type": "string", "minLength": 1},
+        "dataset": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"], "format": "uri"}
+      }
+    },
+    "temporal": {
+      "oneOf": [
+        {"$ref": "#/$defs/instantTemporal"},
+        {"$ref": "#/$defs/dateTemporal"},
+        {"$ref": "#/$defs/yearMonthTemporal"}
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fetchedAt", "generatedAt"],
+      "properties": {
+        "fetchedAt": {"type": ["string", "null"], "format": "date-time"},
+        "generatedAt": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "freshness": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["staleAfterMinutes", "reference"],
+      "properties": {
+        "staleAfterMinutes": {"type": "number", "minimum": 0},
+        "reference": {"enum": ["fetchedAt", "generatedAt"]}
+      }
+    }
+  },
+  "$defs": {
+    "role": {"enum": ["observation", "model-frame", "publication", "snapshot", "fetch", "generation"]},
+    "basis": {"enum": ["declared", "derived", "inferred", "assumed", "unknown"]},
+    "instantTemporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "role", "canonical", "sourceValue", "sourceTimeZone", "timeZoneBasis", "displayTimeZone"],
+      "properties": {
+        "kind": {"const": "instant"},
+        "role": {"$ref": "#/$defs/role"},
+        "canonical": {"type": "string", "format": "date-time"},
+        "sourceValue": {"type": ["string", "null"]},
+        "sourceTimeZone": {"type": ["string", "null"]},
+        "timeZoneBasis": {"$ref": "#/$defs/basis"},
+        "timeZoneNote": {"type": ["string", "null"]},
+        "displayTimeZone": {"type": ["string", "null"]}
+      }
+    },
+    "dateTemporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "role", "canonical", "sourceValue", "sourceTimeZone", "timeZoneBasis", "displayTimeZone"],
+      "properties": {
+        "kind": {"const": "date"},
+        "role": {"$ref": "#/$defs/role"},
+        "canonical": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "sourceValue": {"type": ["string", "null"]},
+        "sourceTimeZone": {"const": null},
+        "timeZoneBasis": {"const": null},
+        "timeZoneNote": {"type": ["string", "null"]},
+        "displayTimeZone": {"const": null}
+      }
+    },
+    "yearMonthTemporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "role", "canonical", "sourceValue", "sourceTimeZone", "timeZoneBasis", "displayTimeZone"],
+      "properties": {
+        "kind": {"const": "year-month"},
+        "role": {"$ref": "#/$defs/role"},
+        "canonical": {"type": "string", "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"},
+        "sourceValue": {"type": ["string", "null"]},
+        "sourceTimeZone": {"const": null},
+        "timeZoneBasis": {"const": null},
+        "timeZoneNote": {"type": ["string", "null"]},
+        "displayTimeZone": {"const": null}
+      }
+    }
+  }
+}

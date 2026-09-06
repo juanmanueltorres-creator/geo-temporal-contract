@@ -1,0 +1,11 @@
+{
+  "name": "geo-temporal-contract-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:ts": "node --disable-warning=ExperimentalWarning --experimental-strip-types --test typescript/test/*.test.ts",
+    "typecheck": "tsc -p typescript/tsconfig.json",
+    "test": "npm run test:ts && npm run typecheck"
+  }
+}
