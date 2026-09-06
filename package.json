@@ -1,8 +1,12 @@
 {
-  "name": "geo-temporal-contract-workspace",
+  "name": "@juanmanueltorres/geo-temporal-contract",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
+  "exports": {
+    ".": "./typescript/src/index.ts"
+  },
+  "types": "./typescript/src/index.ts",
   "scripts": {
     "test:ts": "node --disable-warning=ExperimentalWarning --experimental-strip-types --test typescript/test/*.test.ts",
     "typecheck": "tsc -p typescript/tsconfig.json",
